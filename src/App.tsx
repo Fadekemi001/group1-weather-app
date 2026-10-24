@@ -97,6 +97,11 @@ function App() {
         return
       }
 
+      if (result.name.trim().toLowerCase() !== city.toLowerCase()) {
+        setError('No exact city match found. Try the full city name.')
+        return
+      }
+
       const forecastUrl = new URL('https://api.open-meteo.com/v1/forecast')
       forecastUrl.searchParams.set('latitude', String(result.latitude))
       forecastUrl.searchParams.set('longitude', String(result.longitude))
